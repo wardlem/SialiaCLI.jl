@@ -6,3 +6,6 @@
 /dev/
 /docs/build/
 /docs/site/
+/bin/Manifest.toml
+/scripts/Manifest.toml
+build

@@ -3,6 +3,9 @@ uuid = "94e9e63b-098d-4a0b-971a-4a2abca5dddd"
 authors = ["Mark Wardle", "Potient"]
 version = "0.1.0"
 
+[deps]
+ArgParse = "c7e460c6-2fb9-53a9-8c5b-16f535851c63"
+
 [compat]
 julia = "1.3"
 
