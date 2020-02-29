@@ -1,0 +1,13 @@
+name = "SialiaCLI"
+uuid = "94e9e63b-098d-4a0b-971a-4a2abca5dddd"
+authors = ["Mark Wardle", "Potient"]
+version = "0.1.0"
+
+[compat]
+julia = "1.3"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
