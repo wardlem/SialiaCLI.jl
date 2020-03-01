@@ -2,6 +2,8 @@ module SialiaCLI
 
 using ArgParse
 
+include("./DockerUtils.jl")
+
 function julia_main()::Cint
   try
     real_main()
@@ -27,6 +29,11 @@ function real_main()
   println("Parsed args:")
   for (arg,val) in parsed_args
       println("  $arg  =>  $val")
+  end
+
+  docker_installed = DockerUtils.check_if_docker_installed()
+  if !docker_installed
+    DockerUtils.install_docker()
   end
 end
 
