@@ -5,7 +5,7 @@ function parse_cli_args()
     add_version=true)
       
   @add_arg_table! settings begin
-    "new"
+    "generate", "gen"
       help = "Create a new Sialia project, service, or infrastructure definition"
       action = :command
     "build"
@@ -19,7 +19,7 @@ function parse_cli_args()
       action = :command
   end
 
-  @add_arg_table! settings["new"] begin
+  @add_arg_table! settings["generate"] begin
     "project"
       help = "Create a new Sialia project"
       action = :command

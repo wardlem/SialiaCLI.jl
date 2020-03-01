@@ -3,6 +3,10 @@ module SialiaCLI
 using ArgParse
 
 include("./DockerUtils.jl")
+include("./Generator.jl")
+include("./Builder.jl")
+include("./Runner.jl")
+include("./Deployer.jl")
 
 function julia_main()::Cint
   try
@@ -15,25 +19,16 @@ function julia_main()::Cint
 end
 
 function real_main()
-  # @show ARGS
-  # @show Base.PROGRAM_FILE
-  # @show DEPOT_PATH
-  # @show LOAD_PATH
-  # @show pwd()
-  # @show Base.active_project()
-  # @show Threads.nthreads()
-  # @show Sys.BINDIR
-  # display(Base.loaded_modules)
-  # println("")
   parsed_args = parse_cli_args()
-  println("Parsed args:")
-  for (arg,val) in parsed_args
-      println("  $arg  =>  $val")
-  end
 
-  docker_installed = DockerUtils.check_if_docker_installed()
-  if !docker_installed
-    DockerUtils.install_docker()
+  if parsed_args[:_COMMAND_] == :build
+    Builder.execute(parsed_args)
+  elseif parsed_args[:_COMMAND_] == :generate
+    Generator.execute(parsed_args)
+  elseif parsed_args[:_COMMAND_] == :run
+    Runner.execute(parsed_args)
+  elseif parsed_args[:_COMMAND_] == :deploy
+    Deployer.execute(parsed_args)
   end
 end
 
